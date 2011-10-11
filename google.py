@@ -28,11 +28,14 @@ def load_udox():
     """
         Loads up the u-dox page using urllib and reads it into a variable.
         Then we turn that content into some soup that lets us pull out html.
+        As an example we find all the meta tags and print them
     """
 
     url = 'http://www.u-dox.com'
     page_html = urllib.urlopen(url).read()
     page_soup = BeautifulSoup(page_html)
+    meta_tags = page_soup.findAll('meta')
+    print meta_tags
 
 
 # This is a special thing in python. When you call the script with "python SCRIPTNAME.py" it
