@@ -31,21 +31,27 @@ from BeautifulSoup import BeautifulSoup
         that reads the url and then pulls out certain tags be split in two distinct bits?)
 """
 
-def load_udox():
+def load_vans():
     """
         Loads up the u-dox page using urllib and reads it into a variable.
         Then we turn that content into some soup that lets us pull out html.
         As an example we find all the meta tags and print them
     """
 
-    url = 'http://www.u-dox.com'
+    url = 'http://www.vans.com/news/search/?search_keywords=skate'
     page_html = urllib.urlopen(url).read()
     page_soup = BeautifulSoup(page_html)
-    meta_tags = page_soup.findAll('meta')
-    print meta_tags
-
+    posts = page_soup.findAll(attrs={'class':'post'})
+    results = []
+    for post in posts:
+        header = post.find('h3').string
+        sentence = unicode(post.find('p'))
+        results.append (header + sentence)
+    return results
 
 # This is a special thing in python. When you call the script with "python SCRIPTNAME.py" it
 # will execute the code below when it runs.
 if __name__=='__main__':
-    load_udox()
+    results = load_vans()
+    print "\n\n".join(results)
+    
