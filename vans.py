@@ -3,7 +3,14 @@ from BeautifulSoup import BeautifulSoup
 
 """
     TASK
-    Write a function that uses BeautifulSoup to get links back from google.
+    Write a function that uses BeautifulSoup to get titles and summaries of posts on
+    vans.com's news search: http://www.vans.com/news/search/?search_keywords=KEYWORDHERE
+
+    Try http://www.vans.com/news/search/?search_keywords=rowley and you'll get news posts.
+    You want to grab the titles and summary from the results returned. Send them back in a
+    list like:
+
+    [('Title 1', 'Im the summary'), ('Post #2', 'Hey, im content from post 2...')]
 
     See http://www.crummy.com/software/BeautifulSoup/documentation.html#Parsing a Document
     for more information on how BS. works. Use the function below as a starting point.
